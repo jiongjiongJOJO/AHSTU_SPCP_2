@@ -25,9 +25,6 @@ userid = json.loads(userinfo).get('user')
 password = json.loads(userinfo).get('password')
 send_key = json.loads(userinfo).get('send_key')
 
-print(userid,password,send_key)
-
-
 #产生随机验证码（其实没必要，服务端不验证，输入固定的验证码即可）
 selectChar = ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n",
               "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "J",
