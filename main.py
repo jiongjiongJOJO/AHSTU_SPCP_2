@@ -56,6 +56,7 @@ response = session.get('http://xgb.ahstu.edu.cn/SPCP/Web/Report/Index', verify=F
 info = response.text
 
 if('当前采集日期已登记！' in info):
+    print('疫情填报失败：今日已填报！')
     push(send_key, '安徽科技学院 - 疫情填报失败', info)
     Data = None
 else:
