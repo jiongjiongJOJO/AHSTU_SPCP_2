@@ -89,7 +89,7 @@ Value填入下面框中的内容（注意修改user，password，send_key）
 ## 腾讯云函数（推荐）
 
 ### 1.下载代码包
-下载地址：[https://ws28.cn/f/5l9spwvhi94]https://ws28.cn/f/5l9spwvhi94)
+下载地址：[https://ws28.cn/f/5l9spwvhi94](https://ws28.cn/f/5l9spwvhi94)
 
 ### 2.新建一个函数
 打开[腾讯云函数](https://console.cloud.tencent.com/scf/list)，登录账号（可以用QQ登录），然后点击“新建”
