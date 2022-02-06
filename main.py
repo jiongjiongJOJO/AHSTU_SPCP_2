@@ -113,7 +113,7 @@ try:
                 'radio_10': 'e742629f-8cb7-4533-bf6e-7141befe77e1',
                 'text_1': '',
                 'Other': '',
-                'GetAreaUrl': '/SPCP/Web/Re0port/GetArea',
+                'GetAreaUrl': '/SPCP/Web/Report/GetArea',
                 'IdCard': re.findall('''<input id="IdCard" name="IdCard" type="hidden" value="(.*?)" />''',info)[0],
                 'ProvinceName': re.findall('''<input id="ProvinceName" name="ProvinceName" type="hidden" value="(.*?)" />''',info)[0],
                 'CityName': re.findall('''<input id="CityName" name="CityName" type="hidden" value="(.*?)" />''',info)[0],
