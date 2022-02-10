@@ -32,4 +32,4 @@ jobs:
       env:
         USERINFO: ${{ secrets.USERINFO }}
       run: |
-        python main.py
+        python index.py
