@@ -58,6 +58,12 @@ V2的版本只需要之前手动填报过信息，就会获取之前的信息进
 增加疫情填报的返校信息填写（系统不知不觉更新的一个采集内容）
 ```
 
+**V2.3** - 2022年02月10日
+```
+更改代码结构，方便腾讯云Serverless快速部署。
+新增腾讯云Serverless部署脚本
+```
+
 # 功能
 
 * [x] 自动填报三次随机体温（36.0~36.9）
@@ -112,10 +118,7 @@ Value填入下面框中的内容（注意修改user，password，send_key）
 
 ## 腾讯云函数（推荐）
 
-### 1.下载代码包
-下载地址：[https://ws28.cn/f/5l9spwvhi94](https://ws28.cn/f/5l9spwvhi94)
-
-### 2.新建一个函数
+### 1.新建一个函数
 打开[腾讯云函数](https://console.cloud.tencent.com/scf/list)，登录账号（可以用QQ登录），然后点击“新建”
 ![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/4.jpg)
 然后根据下图步骤填写信息
@@ -124,6 +127,11 @@ Value填入下面框中的内容（注意修改user，password，send_key）
 ![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/6.jpg)
 修改超时时间和关闭日志功能，修改完点保存就行了
 ![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/7.jpg)
+
+### 2.执行部署脚本
+```shell
+curl -O https://gitee.com/jiongjiongJOJO/AHSTU_SPCP_2/raw/main/tencentServerless.sh && bash ./tencentServerless.sh
+```
 
 ### 3.修改相关参数
 打开函数代码，找到index.py文件，修改图中圈出的内容（不要删除或添加多余的空格等内容）
