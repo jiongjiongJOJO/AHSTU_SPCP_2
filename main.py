@@ -22,15 +22,6 @@ def login():
     #     "password": "123456789",
     #     "send_key": "123456789"
     #     }"""
-
-
-    userinfo = """{
-        "user": "2501190115",
-        "password": "191712",
-        "send_key": "4ff1c5132f0f4828835a141462caf368"
-        }"""
-
-
     try:
         userid = json.loads(userinfo).get('user')
         password = json.loads(userinfo).get('password')
