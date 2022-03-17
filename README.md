@@ -1,4 +1,4 @@
-# <center>安徽科技学院自动疫情填报 V2.3(完全自动)</center>
+# <center>安徽科技学院自动疫情填报 V2.4 Beta(完全自动)</center>
 # 简介
 
 
@@ -11,7 +11,7 @@ V2的版本只需要之前手动填报过信息，就会获取之前的信息进
 开源不易，如果本项目对你有帮助，那么就请给个star吧。😄
 
 同时，欢迎各位老板在线打赏。下面是我的要饭码！
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/0.jpg)
+[在线打赏](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/0.jpg)
 
 # 目录
 
@@ -64,6 +64,16 @@ V2的版本只需要之前手动填报过信息，就会获取之前的信息进
 新增腾讯云Serverless部署脚本
 ```
 
+**V2.4 Beta** - 2022年03月17日
+```
+【此版本为测试版本，请谨慎使用，如有疑问请向作者提出】
+重构提交逻辑（完全根据上次提交的记录填报）
+修改推送平台：http://www.pushplus.plus
+优化部分代码警告（还有很多，等我闲了再规范化代码）
+增加pushplus获取token教程
+更改部分教程内容
+```
+
 # 功能
 
 * [x] 自动填报三次随机体温（36.0~36.9）
@@ -83,11 +93,16 @@ V2的版本只需要之前手动填报过信息，就会获取之前的信息进
 
 学号、密码、PushPlus的token(选填)。
 其中，后面提到的user为你的学号，password为你疫情填报系统的密码，send_key为PushPlus的token（不启用推送的话，可以不修改）
+user和password这里是自己的信息，直接填写就行了，token的获取方式如下：
+首先打开[PushPlus官网:https://www.pushplus.plus/](https://www.pushplus.plus/),然后点击登录，使用自己的微信扫码关注公众号就可以登陆成功
+![](img/11.png)
+接着点击【一对一推送】，点击一键复制即可
+![](img/12.png)
 
 ### 3.将参数填到Secrets
 
 首先打开Secrets页面，如下图操作
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/1.jpg)
+![](img/1.jpg)
 
 Name填写为“USERINFO"即可
 
@@ -100,7 +115,7 @@ Value填入下面框中的内容（注意修改user，password，send_key）
 }
 ```
 
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/2.jpg)
+![](img/2.jpg)
 
 
 
@@ -108,7 +123,7 @@ Value填入下面框中的内容（注意修改user，password，send_key）
 
 默认`Actions`处于禁止状态，在`Actions`选项中开启`Actions`功能，把那个绿色的长按钮点一下。如果看到左侧工作流上有黄色`!`号，还需继续开启。
 
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/3.jpg)
+![](img/3.jpg)
 
 ### 5.进行一次push操作
 
@@ -120,13 +135,13 @@ Value填入下面框中的内容（注意修改user，password，send_key）
 
 ### 1.新建一个函数
 打开[腾讯云函数](https://console.cloud.tencent.com/scf/list)，登录账号（可以用QQ登录），然后点击“新建”
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/4.jpg)
+![](img/4.jpg)
 然后根据下图步骤填写信息
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/5.jpg)
+![](img/5.jpg)
 接着点击编辑按钮关掉日志功能（很重要，因为日志会产生费用，不及时充值会停止运行）
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/6.jpg)
+![](img/6.jpg)
 修改超时时间和关闭日志功能，修改完点保存就行了
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/7.jpg)
+![](img/7.jpg)
 
 ### 2.执行部署脚本
 ```shell
@@ -135,33 +150,31 @@ curl -O https://gitee.com/jiongjiongJOJO/AHSTU_SPCP_2/raw/main/tencentServerless
 
 ### 3.修改相关参数
 打开函数代码，找到index.py文件，修改图中圈出的内容（不要删除或添加多余的空格等内容）
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/8.jpg)
+![](img/8.jpg)
 其中，user后面填写自己的学号，password后面填写密码，send_key后面填写[PushPlus的token](#pushplus机器人)（可以在下方获取）
 修改完成后点击下方的部署，等待十秒左右，会提示部署完成。
 
 ### 4.设置自动运行
 选择创建触发器
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/9.jpg)
+![](img/9.jpg)
 设置触发周期
 其中Cron表达式中包含空格，下方内容为图中的表达式，可以直接复制使用
 ```
 0 30 8 * * * *
 ```
-![](https://raw.githubusercontent.com/jiongjiongJOJO/AHSTU_SPCP_2/master/img/10.jpg)
+![](img/10.jpg)
 点击提交后，就配置完成了，每天8:30分自动执行脚本。
 
 # 通知推送方式
 
 ## pushplus机器人
-只需要一个`token`，参考[获取pushplus的token](http://pushplus.hxtrip.com/doc/guide/api.html#%E4%B8%80%E3%80%81%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF%E6%8E%A5%E5%8F%A3)。
+只需要一个`token`，参考[获取pushplus的token](https://www.pushplus.plus/)。
 
 # 申明
 
-本项目仅用于学习。
+本项目仅用于学习,不建议使用该脚本进行自动化操作，否则作者概不负责。
+如果你的体温、位置等信息发生了变化，请及时向学校报备，严禁任何人逃避异常问题。
 
 # 参考项目
 
 [srcrs/UnicomTask](https://github.com/srcrs/UnicomTask)，参考了该项目的README.md文档
-
-
-
