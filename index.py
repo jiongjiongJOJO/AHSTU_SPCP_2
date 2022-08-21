@@ -252,8 +252,8 @@ def main_handler(a, b):
     for i in range(time_temper):
         Temper(session, i)
         time.sleep(1)
-#     if (Data != None):
-#         yiqing(session, Data)
+    if (Data != None):
+        yiqing(session, Data)
 
 
 if __name__ == '__main__':
